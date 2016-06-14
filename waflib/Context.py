@@ -249,7 +249,7 @@ class Context(ctx):
 		if self.cur_script:
 			self.path = self.cur_script.parent
 
-	def recurse(self, dirs, name=None, mandatory=True, once=True, encoding=None):
+	def recurse(self, dirs, name=None, mandatory=True, once=True, encoding=None, wscript=WSCRIPT_FILE):
 		"""
 		Run user code from the supplied list of directories.
 		The directories can be either absolute, or relative to the directory
@@ -264,6 +264,8 @@ class Context(ctx):
 		:type  mandatory: bool
 		:param once: read the script file once for a particular context
 		:type once: bool
+		:param wscript: use file named this instead of `wscript`.
+		:type wscript: string
 		"""
 		try:
 			cache = self.recurse_cache
@@ -276,7 +278,7 @@ class Context(ctx):
 				# absolute paths only
 				d = os.path.join(self.path.abspath(), d)
 
-			WSCRIPT     = os.path.join(d, WSCRIPT_FILE)
+			WSCRIPT     = os.path.join(d, wscript)
 			WSCRIPT_FUN = WSCRIPT + '_' + (name or self.fun)
 
 			node = self.root.find_node(WSCRIPT_FUN)
