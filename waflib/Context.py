@@ -299,11 +299,9 @@ class Context(ctx):
 
 	def log_command(self, cmd, kw):
 		if Logs.verbose:
-			fmt = os.environ.get('WAF_CMD_FORMAT')
-			if fmt == 'string':
-				if not isinstance(cmd, str):
-					cmd = Utils.shell_escape(cmd)
-			Logs.debug('runner: %r', cmd)
+			if not isinstance(cmd, str):
+				cmd = Utils.shell_escape(cmd)
+			Logs.debug('runner: %s', cmd)
 			Logs.debug('runner_env: kw=%s', kw)
 
 	def exec_command(self, cmd, **kw):
@@ -736,4 +734,3 @@ def load_tool(tool, tooldir=None, ctx=None, with_sys_path=True):
 	finally:
 		if not with_sys_path:
 			sys.path += back_path
-
