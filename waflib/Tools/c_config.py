@@ -1007,7 +1007,7 @@ def get_cc_version(conf, cc, gcc=False, icc=False, clang=False):
 
 	:raise: :py:class:`waflib.Errors.ConfigurationError`
 	"""
-	cmd = cc + ['-dM', '-E', '-']
+	cmd = cc + conf.env.CFLAGS + conf.env.CPPFLAGS + ['-dM', '-E', '-']
 	env = conf.env.env or None
 	try:
 		out, err = conf.cmd_and_log(cmd, output=0, input='\n'.encode(), env=env)

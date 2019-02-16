@@ -145,12 +145,11 @@ def configure(conf):
 	"""
 	Configuration for gcc
 	"""
+	conf.cc_add_flags()
 	conf.find_gcc()
 	conf.find_ar()
 	conf.gcc_common_flags()
 	conf.gcc_modifier_platform()
 	conf.cc_load_tools()
-	conf.cc_add_flags()
 	conf.link_add_flags()
 	conf.check_gcc_o_space()
-

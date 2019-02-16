@@ -146,12 +146,11 @@ def configure(conf):
 	"""
 	Configuration for g++
 	"""
+	conf.cxx_add_flags()
 	conf.find_gxx()
 	conf.find_ar()
 	conf.gxx_common_flags()
 	conf.gxx_modifier_platform()
 	conf.cxx_load_tools()
-	conf.cxx_add_flags()
 	conf.link_add_flags()
 	conf.check_gcc_o_space('cxx')
-

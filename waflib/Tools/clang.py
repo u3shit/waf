@@ -19,11 +19,11 @@ def find_clang(conf):
 	conf.env.CC_NAME = 'clang'
 
 def configure(conf):
+	conf.cc_add_flags()
 	conf.find_clang()
 	conf.find_program(['llvm-ar', 'ar'], var='AR')
 	conf.find_ar()
 	conf.gcc_common_flags()
 	conf.gcc_modifier_platform()
 	conf.cc_load_tools()
-	conf.cc_add_flags()
 	conf.link_add_flags()
